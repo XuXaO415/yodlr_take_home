@@ -3,7 +3,11 @@ import axios from 'axios';
 const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
 class YodlrApi {
+
+    static token;
+
     static async request(endpoint, data = {}, verb = "get") {
+
         console.debug("API Call:", endpoint, data, verb);
 
         const url = `${BASE_URL}/${endpoint}`;
@@ -37,7 +41,7 @@ class YodlrApi {
 
     // POST /users
     static async createUser(data) {
-        let res = await this.request(`users`, data, "post");
+        let res = await this.request(`users`, data, "POST");
         return res.user;
     }
 
@@ -49,13 +53,20 @@ class YodlrApi {
 
     // PUT /users/:id
     static async updateUser(id, data) {
-        let res = await this.request(`users/${id}`, data, "put");
+        let res = await this.request(`users/${id}`, data, "PUT");
         return res.user;
     }
 
     // DELETE /users/:id
     static async deleteUser(id) {
-        await this.request(`users/${id}`, {}, "delete");
+        await this.request(`users/${id}`, {}, "DELETE");
+    }
+
+    // POST login user
+    static async loginUser(data) {
+        let res = await this.request(`auth/token`, data, "POST");
+        this.token = res.token;
+        return res.token;
     }
 }
 
