@@ -1,19 +1,4 @@
 import axios from 'axios';
-//for /users, that create an API endpoint that gets all users and returns an array of users
-//then we can use this array of users to display them in the frontend 
-//then create an HTTP POST: creates a new user, returns the created user data 
-
-//for /users/:id
-// HTTP GET: returns the user with given id(numeric, auto - incrementing).HTTP 404
-// if user not found
-// HTTP PUT: updates the user with given id and returns updated record.HTTP 404
-// if user not fund.
-// HTTP DELETE: removes the users with given id, returns nothing(HTTP 204)
-
-// let's create a function that will return an axios instance
-// that will be configured to talk to our API
-// we will pass in the baseURL as a parameter
-// and then we can use this function to create an instance of axios
 
 const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
